@@ -2,7 +2,7 @@
 
 
 @section('titulo')
-Primeiro ecercicio
+Primeiro exercicio
 
 @endsection
 
