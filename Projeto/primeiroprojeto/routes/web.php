@@ -16,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, "welcome"]);
 Route::get('/Exemplo', [HomeController::class, "exemplo"]);
+Route::post('/Resultado', [HomeController::class, "resultado"]);
+Route::get('/Exercicio1', [HomeController::class, "exercicio1"]);
+Route::post('/Resultado1', [HomeController::class, "resultado1"]);
 
