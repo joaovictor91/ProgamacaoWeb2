@@ -1,0 +1,33 @@
+.ImagemHomeBarraMenu{
+    width: 120px;
+    height: 105px;
+}
+
+.BarraMenu{
+    color: black;
+    background-color: lightgreen;
+    padding: 20px;
+    align-items: center;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.TituloCentro{
+    text-align: center;
+    margin-top: 2%;
+}
+
+.FormularioCentro{
+    text-align: center;
+}
+
+.DivFormularioCentro{
+    width: 60%;
+    height: 30%;
+    display:flex;
+    margin: auto;
+}
+
+
+
+
