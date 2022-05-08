@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
-
 
 class ProdutoController extends Controller
 {
@@ -32,7 +32,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        $categorias = Categorias::all();
+        $categorias = Categoria::all();
         return view("produto.create",
             compact("categorias"));
     }
