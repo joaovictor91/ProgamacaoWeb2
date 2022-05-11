@@ -10,7 +10,7 @@
                     @if(session('resposta'))
                         {{session('resposta')}}
                     @endif
-                        
+
                 </div>
                 <div class="flex items-center mt-4 mb-10">
                         <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3" href="{{ route('produto.create')}}" >Novo Registro</a>
@@ -30,6 +30,9 @@
                                     Categoria
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Fornecedor
+                                </th>
+                                <th scope="col" class="px-6 py-3">
 
                                 </th>
                             </tr>
@@ -45,6 +48,9 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     {{$p->categoria->descricao}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{$p->forncedor->nome}}
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="{{route('produto.edit', $p->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Alterar</a>

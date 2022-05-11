@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Models\Categoria;
+use App\Models\Forncedor;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -33,8 +34,10 @@ class ProdutoController extends Controller
     public function create()
     {
         $categorias = Categoria::all();
+        $forncedors = Forncedor::all();
         return view("produto.create",
-            compact("categorias"));
+            compact("categorias", "forncedors"));
+
     }
 
     /**
@@ -79,9 +82,10 @@ class ProdutoController extends Controller
     public function edit($id)
     {
         $categorias = Categoria::all();
+        $forncedors = Forncedor::all();
         $produto = Produto::findOrFail($id);
         return view("produto.edit",
-            compact("categorias","produto"));
+            compact("categorias", "forncedors" ,"produto"));
     }
 
     /**

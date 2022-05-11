@@ -27,6 +27,14 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div>
+                            <x-label>Selecione um fornecedor:</x-label>
+                            <select name="forncedor_id">
+                                @foreach($forncedors as $f)
+                                <option value="{{$f->id}}">{{$f->nome}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="mt-5">
                             <x-button>Salvar</x-button>
                         </div>
