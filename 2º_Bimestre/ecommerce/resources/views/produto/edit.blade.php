@@ -11,17 +11,17 @@
                         @csrf
                         @method("PATCH")
                         <div>
-                            <x-label>Informe o novo nome:</x-label>
+                            <x-label>Informe o novo Nome:</x-label>
                             <x-input name="descricao" value="{{$produto->nome}}"
                                      class="block mt-1 w-full"/>
                         </div>
                         <div>
-                            <x-label>Informe a nova descricao:</x-label>
+                            <x-label>Informe a nova Descricao:</x-label>
                             <x-input name="descricao" value="{{$produto->descricao}}"
                                      class="block mt-1 w-full"/>
                         </div>
                         <div>
-                            <x-label>Selecione uma nova categoria:</x-label>
+                            <x-label>Selecione uma nova Categoria:</x-label>
                             <select name="categoria_id">
                                 @foreach($categorias as $c)
                                 <option value="{{$c->id}}"
@@ -33,7 +33,7 @@
                             </select>
                         </div>
                         <div>
-                            <x-label>Selecione uma nova categoria:</x-label>
+                            <x-label>Selecione um novo Fornecedor:</x-label>
                             <select name="forncedor_id">
                                 @foreach($forncedors as $f)
                                 <option value="{{$f->id}}"

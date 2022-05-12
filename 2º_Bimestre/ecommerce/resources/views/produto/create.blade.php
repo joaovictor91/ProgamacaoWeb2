@@ -10,17 +10,17 @@
                     <form action="{{route('produto.store')}}" method="post">
                         @csrf
                         <div>
-                            <x-label>Informe o nome:</x-label>
+                            <x-label>Informe o Nome:</x-label>
                             <x-input name="nome"
                                      class="block mt-1 w-full"/>
                         </div>
                         <div>
-                            <x-label>Informe a descricao:</x-label>
+                            <x-label>Informe a Descricao:</x-label>
                             <x-input name="descricao"
                                      class="block mt-1 w-full"/>
                         </div>
                         <div>
-                            <x-label>Selecione a categoria:</x-label>
+                            <x-label>Selecione a Categoria:</x-label>
                             <select name="categoria_id">
                                 @foreach($categorias as $c)
                                 <option value="{{$c->id}}">{{$c->descricao}}</option>
@@ -28,7 +28,7 @@
                             </select>
                         </div>
                         <div>
-                            <x-label>Selecione um fornecedor:</x-label>
+                            <x-label>Selecione um Fornecedor:</x-label>
                             <select name="forncedor_id">
                                 @foreach($forncedors as $f)
                                 <option value="{{$f->id}}">{{$f->nome}}</option>
