@@ -13,11 +13,12 @@ class CreateProdutosTable extends Migration
      */
     public function up()
     {
-        Schema::create('produtos', function (Blueprint $table) {
+        Schema::create('produtos', function (Blueprint $table) { ///copiar está área caso tenha que alterar a migração
             $table->id();
             $table->timestamps();
             $table->string("nome");
             $table->string("descricao");
+            $table->float("preco");
             $table->unsignedBigInteger("categoria_id");
             $table->foreign("categoria_id")
             ->references("id")->on("categorias");

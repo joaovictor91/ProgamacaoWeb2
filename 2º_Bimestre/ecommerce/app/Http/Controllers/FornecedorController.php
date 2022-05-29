@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Forncedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class FornecedorController extends Controller
 {
@@ -13,6 +14,7 @@ class FornecedorController extends Controller
     }
     public function index()
     {
+        Gate::authorize("acesso-administrador");
         $fornecedors = Forncedor::all();
         return view('fornecedor.index',
                 compact('fornecedors'));
@@ -25,6 +27,7 @@ class FornecedorController extends Controller
      */
     public function create()
     {
+        Gate::authorize("acesso-administrador");
         return view('fornecedor.create');
     }
 
@@ -36,6 +39,7 @@ class FornecedorController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize("acesso-administrador");
         try{
             $fornecedor = new Forncedor();
             $dados = $request->only($fornecedor->getFillable());
@@ -67,6 +71,7 @@ class FornecedorController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize("acesso-administrador");
         $fornecedor = Forncedor::findOrFail($id);
         return view ("fornecedor.edit",
                         compact("fornecedor"));
@@ -81,6 +86,7 @@ class FornecedorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Gate::authorize("acesso-administrador");
         try{
             $fornecedor = new Forncedor();
             $dados = $request->only($fornecedor->getFillable());
@@ -101,6 +107,7 @@ class FornecedorController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize("acesso-administrador");
         try{
             Forncedor::destroy($id);
             return redirect()

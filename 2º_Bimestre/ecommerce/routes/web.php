@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CompraController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,14 +24,24 @@ Route::resources([
 ]);
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("/", [HomeController::class, "index"]);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get("/detalhe/{id}", [HomeController::class, "detalhe"]);
 
+Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
 
+Route::get('/carrinho',
+    [CompraController::class, 'compras'])->name('carrinho');
+
+Route::get('/adicionar/{id}',
+    [CompraController::class, 'adicionar'])->name('adicionar');
+
+Route::get('/remover/{id}',
+    [CompraController::class, 'remover'])
+    ->name('remover');
+
+Route::get('/finalizar',
+    [CompraController::class, 'finalizar'])
+    ->name('finalizar');
 
 require __DIR__.'/auth.php';

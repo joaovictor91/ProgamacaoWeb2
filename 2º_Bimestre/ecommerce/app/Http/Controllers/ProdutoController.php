@@ -6,6 +6,7 @@ use App\Models\Produto;
 use App\Models\Categoria;
 use App\Models\Forncedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProdutoController extends Controller
 {
@@ -21,6 +22,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+        Gate::authorize("acesso-administrador");
         $produtos = Produto::all();
         return view("produto.index",
             compact("produtos"));
@@ -33,6 +35,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
+        Gate::authorize("acesso-administrador");
         $categorias = Categoria::all();
         $forncedors = Forncedor::all();
         return view("produto.create",
@@ -46,8 +49,11 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+   
     public function store(Request $request)
     {
+        Gate::authorize("acesso-administrador");
         try{
             $produto = new Produto();
             $dados = $request->only($produto->getFillable());
@@ -81,6 +87,7 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize("acesso-administrador");
         $categorias = Categoria::all();
         $forncedors = Forncedor::all();
         $produto = Produto::findOrFail($id);
@@ -97,6 +104,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Gate::authorize("acesso-administrador");
         try{
             $produto = new Produto();
             $dados = $request->only($produto->getFillable());
@@ -117,6 +125,7 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize("acesso-administrador");
         try{
             Produto::destroy($id);
             return redirect()->action([ProdutoController::class, "index"])

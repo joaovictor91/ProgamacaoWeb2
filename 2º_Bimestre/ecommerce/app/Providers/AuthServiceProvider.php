@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Gate::define("acesso-administrador", function(User $user){
-            return $user ->role ==="Adminstrador" ?
+            return $user ->role ==="Administrador" ?
              Response::allow() :
              Response::deny("Você não possui acesso nesta área");
         });

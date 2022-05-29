@@ -16,9 +16,15 @@
                                      class="block mt-1 w-full"/>
                         </div>
                         <div>
-                            <x-label>Informe a nova Descricao:</x-label>
+                            <x-label>Informe a nova Descrição:</x-label>
                             <x-input name="descricao" value="{{$produto->descricao}}"
                                      class="block mt-1 w-full"/>
+                        </div>
+                        <div>
+                            <x-label>Informe o novo Preço:</x-label>
+                            <x-input name="preco" value="{{$produto->preco}}"
+                                     class="block mt-1 w-full"/>
+                            
                         </div>
                         <div>
                             <x-label>Selecione uma nova Categoria:</x-label>
