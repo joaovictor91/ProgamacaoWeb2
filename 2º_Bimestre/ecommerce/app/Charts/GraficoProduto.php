@@ -7,6 +7,7 @@ namespace App\Charts;
 use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GraficoProduto extends BaseChart
 {
@@ -22,10 +23,24 @@ class GraficoProduto extends BaseChart
     public function handler(Request $request): Chartisan
     {
 
-        $produto = ["mesa","cadeira","banco"];
-        $quantidades = [1, 2, 3];
+        $nomes = DB::table('compras')
+            ->join('compra_produtos', 'compras.id', '=', 'compra_produtos.compra_id')
+            ->join('produtos', 'compra_produtos.produto_id', '=', 'produtos.id')
+            ->orderBy('produtos.nome')
+            ->select('produtos.nome')
+            ->get()
+            ->pluck('nome')
+            ->toJson();
+        $quantidade = DB::table('compras')
+            ->join('compra_produtos', 'compras.id', '=', 'compra_produtos.compra_id')
+            ->join('produtos', 'compra_produtos.produto_id', '=', 'produtos.id')
+            ->orderBy('produtos.nome')
+            ->select('compra_produtos.quantidade')
+            ->get()
+            ->pluck('quantidade')
+            ->toJson();
         return Chartisan::build()
-            ->labels($produto)
-            ->dataset('Produtos', $quantidades);
+            ->labels(json_decode($nomes))
+            ->dataset('Produtos',json_decode($quantidade));
     }
 }

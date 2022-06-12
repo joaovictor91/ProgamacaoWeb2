@@ -25,7 +25,7 @@
                                     Descrição
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Preço em (R$)
+                                    Preço da Quantidade
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Categoria
@@ -34,7 +34,7 @@
                                     Fornecedor
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-
+                                    Quantidade
                                 </th>
                             </tr>
                             </thead>
@@ -49,7 +49,7 @@
                                     {{$p->descricao}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    R${{$p->preco}}
+                                    R${{$p->pivot->preco}}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{$p->categoria->descricao}}
@@ -57,12 +57,19 @@
                                 <td class="px-6 py-4">
                                     {{$p->forncedor->nome}}
                                 </td>
+                                <td class="px-6 py-4">
+                                    {{$p->pivot->quantidade}}
+                                </td>
                                 <td class="px-6 py-4 text-right">
-                                        <a href="{{route("remover", $p->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remover</a>
+                                        <a href="{{route("adicionar_no_carrinho", $p->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Adicionar</a>
+                                    </td>
+                                <td class="px-6 py-4 text-right">
+                                        <a href="{{route("remover_do_carrinho", $p->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remover</a>
                                     </td>
 
                             </tr>
                             @endforeach
+
                             @else
                                 Carrinho de Compras Vazio!
                             @endif

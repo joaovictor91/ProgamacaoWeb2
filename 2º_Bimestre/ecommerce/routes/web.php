@@ -31,14 +31,27 @@ Route::get("/detalhe/{id}", [HomeController::class, "detalhe"]);
 Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/carrinho',
-    [CompraController::class, 'compras'])->name('carrinho');
+    [CompraController::class, 'vercarrinho'])->name('carrinho');
 
+Route::get('/carrinho/vercarrinho',
+    [CompraController::class, 'vercarrinho'])->name('vercarrinho');
+
+
+/* Não precisei utilizar
 Route::get('/adicionar/{id}',
     [CompraController::class, 'adicionar'])->name('adicionar');
+*/
 
+Route::get('/carrinho/adicionar/{id}',
+    [CompraController::class, 'adicionar_no_carrinho'])->name('adicionar_no_carrinho');
+/* Não precisei utilizar
 Route::get('/remover/{id}',
     [CompraController::class, 'remover'])
     ->name('remover');
+*/
+Route::get('/carrinho/remover/{id}',
+    [CompraController::class, 'remover_do_carrinho'])
+    ->name('remover_do_carrinho');
 
 Route::get('/finalizar',
     [CompraController::class, 'finalizar'])
